@@ -1,0 +1,173 @@
+// mixin
+
+@use '../my-modules/mixin'as *;
+
+// function 
+
+@use '../my-modules/function'as *;
+// global-rules
+@use '../layout/global-rules'as *;
+
+//variables 
+@use '../variables/media'as *;
+@use '../variables/media'as *;
+@use '../variables/golbal-varibles'as *;
+@use '../layout/global_boxes'as *;
+
+//////////////////
+
+.container {
+
+    & {
+        display: grid;
+        grid-template-rows: 83px minmax(400px, calc(100vh - 170px)) 46px;
+        grid-gap: 20px;
+    }
+
+    .col {
+        .header {
+            & {
+                margin-top: 20px;
+
+                ul {
+                    & {
+                        width: 100%;
+                        @extend %nav-list-reset;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-end;
+                    }
+
+                    li {
+                        margin-right: 25px;
+
+                        a {
+                            color: rgba(0, 0, 0, .87);
+                        }
+
+                        &:nth-child(3) a {
+                            @include btn(100px, 38px, white, primary);
+                            text-transform: capitalize;
+                        }
+                        &:nth-child(4) a {
+                            @include btn(140px, 42px, white, danger);
+                            text-transform: capitalize;
+                            font-size: 18px;
+                        }
+
+                        i:hover {
+                            box-shadow: 0 0 0 5px rgba(63, 66, 71, 0.5);
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .main {
+            .image {
+                @extend %center-flex;
+            }
+
+            .search {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+
+
+
+                [type="text"] {
+                    & {
+                        display: block;
+                        margin-top: 20px;
+                        width: 582px;
+                        height: 40px;
+                        border-radius: 30px;
+                        border-color: rgb(238, 233, 233);
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+
+                .submit {
+                    & {
+                        @extend %center-flex;
+                    }
+
+                    [type="submit"] {
+                        @include btn(intial, 36px, #3c4043, f8f9fa, rgb(93, 228, 210));
+                        border-color: rgb(247, 205, 205);
+                        display: inline;
+                        margin-top: 15px;
+
+                        &:first-child {
+                            margin-right: 25px;
+                        }
+
+                    }
+
+
+                }
+            }}
+        }
+
+        
+    
+
+        .footer {
+            & {
+
+                height: 100%;
+                @include container(40px);
+                background-color: #e0e3e7;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+            }
+
+            .pra1,
+            .pra2 {
+                margin: 0;
+            }
+
+            .part1 ul,
+            .part2 ul {
+                @extend %nav-list-reset;
+
+                li:not(:first-child):not(:last-child) {
+                    margin-right: 20px;
+                }
+
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                li a {
+                    transition: 0.5s;
+                    color: #70757a;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .part1 {
+                ul li:last-child {
+                    margin-right: 50px;
+                    width: 130px;
+                }
+
+                ul li:first-child {
+                    margin-right: 20px;
+                }
+            }
+        }
+}

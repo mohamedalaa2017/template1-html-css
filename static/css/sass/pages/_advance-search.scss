@@ -1,0 +1,227 @@
+// mixin
+
+@use '../my-modules/mixin'as *;
+
+// function 
+
+@use '../my-modules/function'as *;
+// global-rules
+@use '../layout/global-rules'as *;
+
+//variables 
+@use '../variables/media'as *;
+@use '../variables/media'as *;
+@use '../variables/golbal-varibles'as *;
+@use '../layout/global_boxes'as *;
+
+//////////////////
+
+.header {
+    & {
+        @include container(15px);
+        margin-top: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        img {
+            width: 74px;
+            height: 24px;
+        }
+    }
+
+    .nav a {
+        text-decoration: none;
+        // color: rgba(0, 0, 0, .87);
+        @include btn(140px, 40px, white, danger);
+    }
+}
+
+.title {
+
+    // @include container(28px);
+    h2 {
+        margin-top: 40px;
+        margin-left: 33px;
+        color: #ec2310;
+    }
+
+}
+
+$input-width: 570px;
+
+.main {
+    & {
+        display: grid;
+        grid-template-columns: 240px $input-width 1fr;
+
+        @include media(max, large) {
+            $input-width: 200px;
+            grid-template-columns: 240px minmax(300px, 1fr);
+        }
+
+    }
+
+    .col {
+        .label {
+            & {
+                margin-top: 35px;
+                @include padding-lr(35px);
+            }
+
+            h3 {
+                margin-top: -3.5px;
+                margin-bottom: 29px;
+            }
+
+            ul {
+                @extend %list-reset;
+                height: 215px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+
+            }
+
+        }
+
+        .input {
+            & {
+                margin-top: 76.5px;
+                height: 210px;
+            }
+
+            .search {
+                & {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    >[type="search"] {
+                        width: $input-width;
+                        height: 27px;
+
+                        &:not(:last-child) {
+                            margin-bottom: 22.5px;
+                        }
+
+                        @include media(max, large) {
+                            width: 440px;
+                        }
+
+                        @include media(max, mobile) {
+                            width: 250px;
+                        }
+                    }
+
+                }
+
+                .last-input {
+                    width: $input-width;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    [type="search"] {
+                        width: 260px;
+                        height: 27px;
+
+
+                        @include media(max, large) {
+                            width: 200px;
+                        }
+
+                        @include media(max, mobile) {
+                            width: 110px;
+                        }
+
+
+                    }
+
+                    @include media(max, large) {
+                        width: 440px;
+                    }
+
+                    @include media(max, mobile) {
+                        width: 250px;
+                    }
+
+                }
+
+
+            }
+
+            [type="submit"] {
+                margin-top: 50px;
+                margin-left: 350px;
+                @include btn(150px, 40px, white, primary);
+
+
+                @include media-range (small, large) {
+                    margin-left: 200px;
+                }
+
+                @include media-range (10px, small) {
+                    margin-left: 97px;
+                }
+            }
+
+        }
+
+        .info {
+
+            & {
+                margin-top: 60px;
+                // @include padding-lr(18px);
+                padding-right: 90px;
+                padding-left: 18px;
+                font-size: 13px;
+            }
+
+            h4 {
+                font-size: 18px;
+                margin-top: -23.5px;
+                margin-bottom: 26px;
+            }
+
+            ul {
+                @extend %list-reset;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                li {
+                    &:not(:first-child) {
+                        margin-top: 33.5px;
+                    }
+
+                    &:nth-child(4) {
+                        margin-top: 30.5px;
+                    }
+
+                    &:nth-child(5) {
+                        margin-top: 17.5px;
+                    }
+                }
+
+                span {
+                    font-weight: bold;
+                }
+            }
+
+            @include media(max, large) {
+                display: none;
+            }
+        }
+    }
+
+
+
+
+
+
+}
